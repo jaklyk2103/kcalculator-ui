@@ -1,12 +1,17 @@
+'use client'
+
 import './navigationBar.css';
+import { useRouter } from 'next/navigation';
 
 export default function NavigationBar() {
+  const { push } = useRouter();
+
   return(
     <div className="flex justify-between gap-3 w-full border-2 border-white">
       <div className="flex">
-        <button className="navigation-item"><span>Home</span></button>
-        <button className="navigation-item"><span>Nutrition</span></button>
-        <button className="navigation-item"><span>Dishes & Ingredients</span></button>
+        <button className="navigation-item" onClick={() => push('/')}><span>Home</span></button>
+        <button className="navigation-item" onClick={() => push('/nutrition')}><span>Nutrition</span></button>
+        <button className="navigation-item" onClick={() => push('/dishes-ingredients')}><span>Dishes & Ingredients</span></button>
       </div>
         
       <div className='flex'>
