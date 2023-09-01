@@ -8,6 +8,9 @@ export default function NavigationBar() {
 
   return (
     <div className="flex justify-between gap-3 w-full border-2 border-black">
+      <a className="skip-to-content-link" href="#main">
+        Skip to content
+      </a>
       <div className="flex">
         <button className="navigation-item" onClick={() => push("/")}>
           <span>Home</span>
