@@ -1,7 +1,3 @@
 export default function Nutrition() {
-  return(
-    <div>
-      Dishes & Ingredients page
-    </div>
-  )
+  return <div>Dishes & Ingredients page</div>;
 }
