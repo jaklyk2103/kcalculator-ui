@@ -1,3 +1,7 @@
-.register-text-input {
+.register__text-input {
   @apply flex flex-col gap-1;
+}
+
+.register__text-input {
+  @apply border border-black h-8;
 }
