@@ -1,0 +1,11 @@
+.register__text-input-wrapper {
+  @apply flex flex-col w-80 h-16;
+}
+
+.register__text-input {
+  @apply border border-black w-full h-full;
+}
+
+.register__button {
+  @apply w-80 h-10 border border-black rounded bg-white;
+}
