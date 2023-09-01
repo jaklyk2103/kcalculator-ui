@@ -7,7 +7,7 @@ export default function NavigationBar() {
   const { push } = useRouter();
 
   return(
-    <div className="flex justify-between gap-3 w-full border-2 border-white">
+    <div className="flex justify-between gap-3 w-full border-2 border-black">
       <div className="flex">
         <button className="navigation-item" onClick={() => push('/')}><span>Home</span></button>
         <button className="navigation-item" onClick={() => push('/nutrition')}><span>Nutrition</span></button>
@@ -15,8 +15,8 @@ export default function NavigationBar() {
       </div>
         
       <div className='flex'>
-        <div className="p-2 border-l-2 h-full">Welcome!</div>
-        <button className='p-2 border-l-2'>Log out</button>
+        <div className="p-2 border-l-2 border-black h-full">Welcome!</div>
+        <button className='p-2 border-l-2 border-black'>Log out</button>
       </div>
     </div>
   )
