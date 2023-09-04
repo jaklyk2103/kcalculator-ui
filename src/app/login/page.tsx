@@ -1,16 +1,36 @@
 "use client";
 
 import TextInput from "@/components/text-input/text-input";
+import { useRouter } from "next/navigation";
+import { browser } from "process";
 import { useState } from "react";
 
 import "../register/form.css";
 
 export default function Login() {
+  const loginUrl = String(process.env.NEXT_PUBLIC_LOGIN_URL);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
-  const handleLogin = () => {
-    // todo
+  //@ts-ignore
+  const handleLogIn = async (event) => {
+    event.preventDefault();
+    try {
+      console.log("login url: ", loginUrl);
+      await fetch(loginUrl, {
+        body: JSON.stringify({ email, password }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "http://localhost:3000",
+        },
+        method: "POST",
+      });
+      router.push("/");
+    } catch (error) {
+      console.log("Error during logging in: ", error);
+    }
   };
 
   return (
@@ -37,7 +57,7 @@ export default function Login() {
         />
 
         <div>
-          <button className="register__button" onClick={handleLogin}>
+          <button className="register__button" onClick={handleLogIn}>
             Log in
           </button>
           <div>

@@ -2,9 +2,14 @@
 
 import "./navigationBar.css";
 import { useRouter } from "next/navigation";
+import { browser } from "process";
 
 export default function NavigationBar() {
   const { push } = useRouter();
+  const handleLogOut = () => {
+    // cookie should be removed by api?
+    push("/login");
+  };
 
   return (
     <div className="flex justify-between gap-3 w-full border-2 border-black">
@@ -28,7 +33,9 @@ export default function NavigationBar() {
 
       <div className="flex">
         <div className="p-2 border-l-2 border-black h-full">Welcome!</div>
-        <button className="p-2 border-l-2 border-black">Log out</button>
+        <button className="p-2 border-l-2 border-black" onClick={handleLogOut}>
+          Log out
+        </button>
       </div>
     </div>
   );

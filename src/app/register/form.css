@@ -3,7 +3,7 @@
 }
 
 .register__text-input {
-  @apply border border-black w-full h-full;
+  @apply border border-black w-full h-full px-2 py-1;
 }
 
 .register__button {
