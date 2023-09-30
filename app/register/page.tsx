@@ -1,17 +1,36 @@
 "use client";
 
 import { useState } from "react";
-import TextInput from "@/components/text-input/text-input";
+import { useRouter } from "next/navigation";
+import TextInput from "../../components/text-input/text-input";
 import "./form.css";
 
 export default function Register() {
+  const registerUrl = String(process.env.NEXT_PUBLIC_REGISTER_URL);
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const router = useRouter();
 
-  const handleRegister = () => {
-    // todo
+  //@ts-ignore
+  const handleRegister = async (event) => {
+    event.preventDefault();
+    try {
+      console.log("login url: ", registerUrl);
+      await fetch(registerUrl, {
+        body: JSON.stringify({ email, password }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "http://localhost:3000",
+        },
+        method: "POST",
+      });
+      router.push("/");
+    } catch (error) {
+      console.log("Error during logging in: ", error);
+    }
   };
 
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import TextInput from "@/components/text-input/text-input";
+import TextInput from "../../components/text-input/text-input";
 import { useRouter } from "next/navigation";
 import { browser } from "process";
 import { useState } from "react";
