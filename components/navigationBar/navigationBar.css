@@ -1,0 +1,13 @@
+.navigation-item {
+  @apply h-full border-r-2 border-black p-2;
+}
+
+.skip-to-content-link {
+  @apply h-10 w-36 right-full p-2 absolute;
+  background: #e77e23;
+  transition: transform 0.3s;
+}
+
+.skip-to-content-link:focus {
+  transform: translateX(100%);
+}
