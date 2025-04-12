@@ -1,1 +1,0 @@
-<template>Dishes & Ingredients</template>

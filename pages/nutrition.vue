@@ -1,1 +1,0 @@
-<template>Nutrition page</template>
