@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 .ingredient-create__input {
   @apply border px-1 py-1.5;
 }
