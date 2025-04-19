@@ -3,9 +3,12 @@ type InputTextWithLabelProps = {
   label: string;
 };
 
-export default function InputText({ id, label }: InputTextWithLabelProps) {
+export default function InputTextWithLabel({
+  id,
+  label,
+}: InputTextWithLabelProps) {
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-0.5">
       <label>{label}</label>
       <input id={id} className="ingredient-create__input" type="text" />
     </div>
