@@ -10,7 +10,7 @@ export default function Ingredients() {
   // const [carbohydrates, setCarbohydrates] = useState<number>();
 
   return (
-    <div className="">
+    <div className="w-200 border rounded p-6 shadow">
       <AddIngredientForm />
     </div>
   );

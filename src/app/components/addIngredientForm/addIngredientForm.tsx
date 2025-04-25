@@ -1,9 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import InputTextWithLabel from "../../components/inputTextWithLabel";
 import "./addIngredientForm.css";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 type Ingredient = {
   name: string;
@@ -27,53 +25,66 @@ export default function AddIngredientForm({
   // const [carbohydrates, setCarbohydrates] = useState<number>();
 
   // use register instead of useState?
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<>();
-
-  function handleAddClick() {}
+  const { register, handleSubmit, getValues } = useForm<Ingredient>({
+    defaultValues: {
+      name: "",
+      energy: 0,
+      proteins: 0,
+      fats: 0,
+      carbohydrates: 0,
+    },
+  });
 
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
-        <InputTextWithLabel
-          id="ingredients-create__name"
-          label="Name"
-          value={name}
-          onChange={(event) => setName(event.currentTarget.value)}
-        />
-        <InputTextWithLabel
-          id="ingredients-create__energy"
-          label="Energy"
-          value={energy}
-          onChange={(event) => setEnergy(Number(event.currentTarget.value))}
-        />
-        <InputTextWithLabel
-          id="ingredients-create__proteins"
-          label="Proteins"
-          value={proteins}
-          onChange={(event) => setProteins(Number(event.currentTarget.value))}
-        />
-        <InputTextWithLabel
-          id="ingredients-create__fats"
-          label="Fats"
-          value={fats}
-          onChange={(event) => setFats(Number(event.currentTarget.value))}
-        />
-        <InputTextWithLabel
-          id="ingredients-create__carbohydrates"
-          label="Carbohydrates"
-          value={carbohydrates}
-          onChange={(event) =>
-            setCarbohydrates(Number(event.currentTarget.value))
-          }
-        />
+        <div className="ingredient-create__field-wrapper">
+          <label>Name</label>
+          <input
+            className="ingredient-create__input"
+            {...register("name", { required: true })}
+          />
+        </div>
+
+        <div className="ingredient-create__field-wrapper">
+          <label>Energy</label>
+          <input
+            className="ingredient-create__input"
+            {...register("energy", { required: true })}
+          />
+        </div>
+
+        <div className="ingredient-create__field-wrapper">
+          <label>Proteins</label>
+          <input
+            className="ingredient-create__input"
+            {...register("proteins", { required: true })}
+          />
+        </div>
+
+        <div className="ingredient-create__field-wrapper">
+          <label>Fats</label>
+          <input
+            className="ingredient-create__input"
+            {...register("fats", { required: true })}
+          />
+        </div>
+
+        <div className="ingredient-create__field-wrapper">
+          <label>Carbohydrates</label>
+          <input
+            className="ingredient-create__input"
+            {...register("carbohydrates", { required: true })}
+          />
+        </div>
       </div>
 
-      <button onClick={handleAddClick}>Add</button>
+      <button
+        className="cursor-pointer border rounded px-1 py-1.5 w-40"
+        onClick={handleSubmit(() => handleAddIngredient(getValues()))}
+      >
+        Add
+      </button>
     </div>
   );
 }

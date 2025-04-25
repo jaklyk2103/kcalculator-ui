@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+.ingredient-create__field-wrapper {
+  @apply flex flex-col gap-0.5;
+}
+
 .ingredient-create__input {
-  @apply border px-1 py-1.5;
+  @apply border rounded px-1 py-1.5;
 }
