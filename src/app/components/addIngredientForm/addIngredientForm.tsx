@@ -1,22 +1,15 @@
 "use client";
 
+import { Ingredient } from "@/app/api/ingredients/actions";
 import "./addIngredientForm.css";
 import { useForm } from "react-hook-form";
 
-type Ingredient = {
-  name: string;
-  energy: number;
-  proteins: number;
-  fats: number;
-  carbohydrates: number;
-};
-
 type AddIngredientFormProps = {
-  handleAddIngredient: (ingredient: Ingredient) => void;
+  handleCreateIngredient: (ingredient: Ingredient) => Promise<void>;
 };
 
 export default function AddIngredientForm({
-  handleAddIngredient,
+  handleCreateIngredient,
 }: AddIngredientFormProps) {
   // const [name, setName] = useState<string>();
   // const [energy, setEnergy] = useState<number>();
@@ -28,7 +21,7 @@ export default function AddIngredientForm({
   const { register, handleSubmit, getValues } = useForm<Ingredient>({
     defaultValues: {
       name: "",
-      energy: 0,
+      calories: 0,
       proteins: 0,
       fats: 0,
       carbohydrates: 0,
@@ -50,7 +43,7 @@ export default function AddIngredientForm({
           <label>Energy</label>
           <input
             className="ingredient-create__input"
-            {...register("energy", { required: true })}
+            {...register("calories", { required: true })}
           />
         </div>
 
@@ -81,7 +74,7 @@ export default function AddIngredientForm({
 
       <button
         className="cursor-pointer border rounded px-1 py-1.5 w-40"
-        onClick={handleSubmit(() => handleAddIngredient(getValues()))}
+        onClick={handleSubmit(() => handleCreateIngredient(getValues()))}
       >
         Add
       </button>
